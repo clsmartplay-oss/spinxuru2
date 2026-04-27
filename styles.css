@@ -1,0 +1,549 @@
+/* Variables y base */
+:root {
+  --gold: #d4af37;
+  --gold-light: #f4e4a6;
+  --red-dark: #8b1538;
+  --red: #c41e3a;
+  --magenta: #c71585;
+  --white: #fff;
+  --shadow: rgba(0, 0, 0, 0.4);
+  --font-title: 'Oswald', sans-serif;
+  --font-body: 'Roboto', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--white);
+  position: relative;
+}
+
+/* Fondo */
+.bg-gradient {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, var(--red-dark) 0%, #6b0f2a 30%, var(--magenta) 70%, #9b0d5a 100%);
+  z-index: -2;
+}
+
+.particles {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(2px 2px at 60% 70%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(2px 2px at 80% 20%, rgba(255,255,255,0.35), transparent);
+  background-size: 200px 200px;
+  animation: particles 20s linear infinite;
+}
+
+@keyframes particles {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-200px, -200px); }
+}
+
+/* Notificaciones push: en desktop a la derecha; en móvil arriba para no tapar la ruleta */
+.notifications {
+  position: fixed;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  width: min(280px, calc(100vw - 24px));
+  z-index: 100;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 70vh;
+  overflow: hidden;
+}
+
+.notification {
+  background: linear-gradient(135deg, rgba(20,20,30,0.95) 0%, rgba(40,20,40,0.9) 100%);
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  padding: 12px 14px;
+  box-shadow: 0 8px 24px var(--shadow);
+  animation: slideIn 0.4s ease-out;
+  backdrop-filter: blur(8px);
+}
+
+.notification strong {
+  color: var(--gold-light);
+  font-weight: 600;
+}
+
+.notification .amount {
+  color: #7cff7c;
+  font-weight: 700;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Banner bono superior */
+.banner-bono {
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.25) 0%, rgba(212, 175, 55, 0.4) 50%, rgba(212, 175, 55, 0.25) 100%);
+  border-bottom: 2px solid var(--gold);
+  padding: 6px 12px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(8px);
+}
+
+.banner-bono-text {
+  font-size: clamp(0.8rem, 2vw, 0.95rem);
+  font-weight: 700;
+  color: var(--gold-light);
+  text-shadow: 0 1px 2px var(--shadow);
+}
+
+/* Layout principal: compacto para que el CTA WhatsApp se vea sin scroll */
+.landing {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 12px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero {
+  text-align: center;
+}
+
+.trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 10px;
+  margin-bottom: 4px;
+}
+
+.trust-badge {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+}
+
+/* Prueba social y rating */
+.social-proof {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.social-proof-text {
+  font-size: 1rem;
+  opacity: 0.95;
+}
+
+.social-proof-text strong {
+  color: var(--gold-light);
+}
+
+.trust-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  font-size: 0.8rem;
+}
+
+.stars {
+  color: var(--gold);
+  letter-spacing: 2px;
+}
+
+.rating-text {
+  opacity: 0.95;
+}
+
+.rating-text strong {
+  color: var(--gold-light);
+}
+
+.title {
+  font-family: var(--font-title);
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  font-weight: 700;
+  text-shadow: 0 2px 4px var(--shadow), 0 0 20px rgba(212, 175, 55, 0.4);
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.subtitle {
+  font-size: clamp(0.85rem, 2.2vw, 1rem);
+  opacity: 0.95;
+  font-weight: 500;
+}
+
+/* Ruleta */
+.roulette-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.roulette-wrap {
+  position: relative;
+  width: min(340px, 88vw);
+  aspect-ratio: 1;
+}
+
+.pointer {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-top: 30px solid var(--gold);
+  filter: drop-shadow(0 2px 6px var(--shadow));
+  z-index: 2;
+}
+
+.wheel-container {
+  position: absolute;
+  inset: 18px 0 0;
+  border-radius: 50%;
+  border: 6px solid var(--gold);
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.25), 0 0 32px rgba(212, 175, 55, 0.4), 0 0 48px rgba(212, 175, 55, 0.15), inset 0 0 16px rgba(0,0,0,0.2);
+  overflow: hidden;
+  background: #1a0a0a;
+}
+
+.wheel {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+.wheel.spinning {
+  transition: transform 4.5s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+}
+
+/* Cada segmento es un triángulo (porción de la ruleta); centro de la rueda = 0% 100% del segmento */
+.segment {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  left: 50%;
+  top: 0;
+  transform-origin: 0% 100%;
+  /* Triángulo: vértices = centro rueda (0 100%), 0° (100% 100%), 51.43° (62.35% 21.82%) */
+  clip-path: polygon(0 100%, 100% 100%, 62.35% 21.82%);
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: clamp(0.95rem, 3.2vw, 1.25rem);
+  color: var(--white);
+  text-shadow: 0 1px 2px var(--shadow);
+  /* Líneas divisorias entre triángulos (borde que sigue los lados) */
+  border: 2px solid rgba(0, 0, 0, 0.35);
+  box-sizing: border-box;
+}
+
+.segment:nth-child(odd) {
+  background: var(--red);
+}
+
+.segment:nth-child(even) {
+  background: var(--white);
+  color: var(--red);
+}
+
+/* Etiqueta % centrada en el centro de cada triángulo (centroide del wedge) */
+.segment-label {
+  position: absolute;
+  left: 54.12%;
+  top: 73.94%;
+  transform: translate(-50%, -50%) rotate(-25.7deg);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.segment:nth-child(even) .segment-label {
+  color: var(--red);
+}
+
+/* Ángulos para 7 segmentos: 360/7 ≈ 51.43° cada uno */
+.segment:nth-child(1) { transform: rotate(0deg); }
+.segment:nth-child(2) { transform: rotate(51.43deg); }
+.segment:nth-child(3) { transform: rotate(102.86deg); }
+.segment:nth-child(4) { transform: rotate(154.29deg); }
+.segment:nth-child(5) { transform: rotate(205.71deg); }
+.segment:nth-child(6) { transform: rotate(257.14deg); }
+.segment:nth-child(7) { transform: rotate(308.57deg); }
+
+.result-announce {
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--gold-light);
+  min-height: 1.3em;
+}
+
+.result-announce strong {
+  color: var(--gold);
+}
+
+/* CTA y botón WhatsApp: prioridad máxima, siempre visible */
+.cta-section {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 0;
+}
+
+.cta-lead {
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 0.95;
+  max-width: 320px;
+}
+
+.cta-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  opacity: 0.95;
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  color: #fff;
+  background: #25D366;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5), 0 0 0 3px rgba(212, 175, 55, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  animation: ctaGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes ctaGlow {
+  0%, 100% { box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5), 0 0 0 3px rgba(212, 175, 55, 0.4); }
+  50% { box-shadow: 0 8px 28px rgba(37, 211, 102, 0.65), 0 0 0 4px rgba(212, 175, 55, 0.5); }
+}
+
+.btn-whatsapp:hover,
+.btn-whatsapp:focus {
+  transform: scale(1.05);
+  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.6), 0 0 0 4px var(--gold);
+  color: #fff;
+}
+
+.btn-whatsapp:active {
+  transform: scale(1.02);
+}
+
+.btn-whatsapp.pending {
+  opacity: 0.75;
+  pointer-events: none;
+  cursor: not-allowed;
+  animation: none;
+}
+
+.btn-whatsapp.loading {
+  pointer-events: none;
+  cursor: wait;
+  opacity: 0.85;
+}
+
+.btn-icon {
+  width: 28px;
+  height: 28px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+.cta-hint {
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+/* Card testimonial Prem1o P4GAD0 */
+.testimonial-card {
+  width: 100%;
+  max-width: 300px;
+  background: linear-gradient(135deg, rgba(20, 20, 30, 0.9) 0%, rgba(50, 25, 45, 0.85) 100%);
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  padding: 10px 14px;
+  text-align: center;
+  box-shadow: 0 6px 20px var(--shadow);
+}
+
+.testimonial-premio {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #7cff7c;
+  margin-bottom: 2px;
+}
+
+.testimonial-name {
+  display: block;
+  font-weight: 600;
+  color: var(--gold-light);
+  margin-bottom: 0;
+}
+
+.testimonial-meta {
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.9;
+}
+
+/* Footer */
+.site-footer {
+  margin-top: 12px;
+  padding: 10px;
+  text-align: center;
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  /* Landing más corta en móvil: menos padding y ruleta más chica para ver el botón WhatsApp */
+  .landing {
+    padding: 8px 12px 18px;
+    gap: 8px;
+    padding-bottom: 20vh;
+  }
+
+  .roulette-wrap {
+    width: min(280px, 82vw);
+  }
+
+  .wheel-container {
+    inset: 14px 0 0;
+    border-width: 5px;
+  }
+
+  .pointer {
+    border-left-width: 14px;
+    border-right-width: 14px;
+    border-top-width: 24px;
+  }
+
+  /* Pop-ups en franja fija abajo; el contenido tiene padding para no quedar tapado */
+  .notifications {
+    top: auto;
+    bottom: 0;
+    left: 6px;
+    right: 6px;
+    width: auto;
+    max-width: none;
+    transform: none;
+    max-height: 18vh;
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .notification {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .landing {
+    padding-bottom: 18vh;
+  }
+
+  .roulette-wrap {
+    width: min(250px, 78vw);
+  }
+
+  .notifications {
+    left: 4px;
+    right: 4px;
+    max-height: 16vh;
+  }
+
+  .notification {
+    padding: 6px 8px;
+    font-size: 0.75rem;
+  }
+
+  .banner-bono {
+    padding: 5px 10px;
+  }
+
+  .banner-bono-text {
+    font-size: 0.75rem;
+  }
+
+  .trust-badges {
+    gap: 4px 8px;
+  }
+
+  .trust-badge {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
+
+  .testimonial-card {
+    padding: 8px 12px;
+  }
+
+  .social-proof-text,
+  .trust-rating {
+    font-size: 0.75rem;
+  }
+}
