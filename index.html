@@ -150,6 +150,20 @@ body {
   text-align: center;
 }
 
+.hero-flag {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.hero-flag svg {
+  width: min(92px, 24vw);
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 16px var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
 .trust-badges {
   display: flex;
   flex-wrap: wrap;
@@ -761,6 +775,15 @@ src="https://www.facebook.com/tr?id=1496897755236890&ev=PageView&noscript=1"
 
   <main class="landing">
     <header class="hero">
+      <div class="hero-flag" title="Uruguay">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-label="Bandera de Uruguay">
+          <title>Bandera de Uruguay</title>
+          <path fill="#ffffff" d="M0 0h900v600H0z"/>
+          <path fill="#0038a8" d="M0 66.67h900v66.67H0zm0 133.33h900v66.67H0zm0 133.33h900v66.67H0zm0 133.33h900v66.67H0z"/>
+          <path fill="#ffffff" d="M0 0h333.33v333.33H0z"/>
+          <circle cx="166.67" cy="166.67" r="48" fill="#fcd116" stroke="#dea00a" stroke-width="3"/>
+        </svg>
+      </div>
       <div class="trust-badges">
         <span class="trust-badge">✅ Plataforma verificada</span>
         <span class="trust-badge">C4sin0 de confianza</span>
@@ -805,7 +828,7 @@ src="https://www.facebook.com/tr?id=1496897755236890&ev=PageView&noscript=1"
           <h2>¡GANASTE!</h2>
           <p>Tu bono acreditado es:</p>
           <h3>300%</h3>
-          <a href="https://wa.me/5491176437469?text=Hola,%20quiero%20reclamar%20mi%20bono%20del%20300%25." class="btn-ctx" id="ctx" target="_blank" onclick="fbq('trackCustom', 'WhatsApp'); fbq('trackCustom', 'ReclamarBono'); fbq('track', 'Lead'); fbq('track', 'Contact');">RECLAMAR BONO</a>
+          <a href="https://wa.me/5491176437469?text=Hola,%20quiero%20reclamar%20mi%20bono%20del%20300%25%20en%20Uruguay." class="btn-ctx" id="ctx" target="_blank" onclick="fbq('trackCustom', 'WhatsApp'); fbq('trackCustom', 'ReclamarBono'); fbq('track', 'Lead'); fbq('track', 'Contact');">RECLAMAR BONO</a>
         </div>
       </div>
 
@@ -823,7 +846,7 @@ src="https://www.facebook.com/tr?id=1496897755236890&ev=PageView&noscript=1"
 
     <section class="cta-section">
       <p class="cta-lead">Te estamos conectando con nuestro equipo vía WhatsApp</p>
-      <a id="ctx-whatsapp" class="btn-whatsapp" href="https://wa.me/5491176437469?text=Hola,%20quiero%20reclamar%20mi%20bono%20del%20300%25." target="_blank" rel="noopener noreferrer" aria-label="Ir a WhatsApp" onclick="fbq('trackCustom', 'WhatsApp'); fbq('track', 'Contact');">Ir a WhatsApp ahora</a>
+      <a id="ctx-whatsapp" class="btn-whatsapp" href="https://wa.me/5491176437469?text=Hola,%20quiero%20reclamar%20mi%20bono%20del%20300%25%20en%20Uruguay." target="_blank" rel="noopener noreferrer" aria-label="Ir a WhatsApp" onclick="fbq('trackCustom', 'WhatsApp'); fbq('track', 'Contact');">Ir a WhatsApp ahora</a>
       <p class="cta-hint">Un asesor te atiende al instante</p>
     </section>
 

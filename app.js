@@ -15,7 +15,7 @@
 
   // CONFIG: Reemplaza con tu número (código país sin +, sin espacios). Ej: Argentina 54911 1234-5678
   const WHATSAPP_NUMBER = '5491176437469';
-  const WHATSAPP_MESSAGE_TEMPLATE = 'Hola, quiero reclamar mi b0n0 del %BONUS%%.';
+  const WHATSAPP_MESSAGE_TEMPLATE = 'Hola, quiero reclamar mi b0n0 del %BONUS%% en Uruguay.';
 
   const NOMBRES_ARGENTINOS = [
     'Sofía', 'Martín', 'Valentina', 'Santiago', 'Emma', 'Mateo', 'Mía', 'Lucas',
@@ -121,7 +121,7 @@
     var bonus = currentBonus != null ? currentBonus : getSavedBonus();
     var text = bonus != null
       ? WHATSAPP_MESSAGE_TEMPLATE.replace('%BONUS%', bonus)
-      : 'Hola, quiero reclamar mi b0n0 de Spin Uruguay.';
+      : 'Hola, quiero reclamar mi b0n0 en Uruguay.';
     whatsappBtn.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(text);
   }
 
